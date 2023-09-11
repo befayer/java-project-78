@@ -19,5 +19,4 @@ public final class StringSchema extends BaseSchema {
         addCheck(CheckName.MIN_LENGTH, value -> ((String) value).length() >= length);
         return this;
     }
-
 }

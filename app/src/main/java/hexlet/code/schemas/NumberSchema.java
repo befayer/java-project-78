@@ -19,5 +19,4 @@ public final class NumberSchema extends BaseSchema {
         addCheck(CheckName.RANGE, value -> ((int) value) >= min && ((int) value) <= max);
         return this;
     }
-
 }
