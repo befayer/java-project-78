@@ -7,24 +7,21 @@ public final class MapSchema extends BaseSchema {
         addCheck(CheckName.REQUIRED, value -> value instanceof Map);
     }
 
-    public MapSchema required() {
+    public void required() {
         required = true;
-        return this;
     }
 
-    public MapSchema sizeof(int size) {
-        addCheck(CheckName.SIZE_OF, value -> ((Map) value).size() == size);
-        return this;
+    public void sizeof(int size) {
+        addCheck(CheckName.SIZE_OF, value -> ((Map<?, ?>) value).size() == size);
     }
 
-    public MapSchema shape(Map<String, BaseSchema> schemas) {
+    public void shape(Map<String, BaseSchema> schemas) {
         addCheck(CheckName.SHAPE, value -> schemas.entrySet()
                 .stream()
                 .allMatch(e -> {
-                    Object v = ((Map) value).get(e.getKey());
+                    Object v = ((Map<?, ?>) value).get(e.getKey());
                     return e.getValue()
                             .isValid(v);
                 }));
-        return this;
     }
 }

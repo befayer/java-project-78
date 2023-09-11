@@ -5,9 +5,8 @@ public final class NumberSchema extends BaseSchema {
         addCheck(CheckName.REQUIRED, value -> value instanceof Integer);
     }
 
-    public NumberSchema required() {
+    public void required() {
         required = true;
-        return this;
     }
 
     public NumberSchema positive() {
@@ -15,8 +14,7 @@ public final class NumberSchema extends BaseSchema {
         return this;
     }
 
-    public NumberSchema range(int min, int max) {
+    public void range(int min, int max) {
         addCheck(CheckName.RANGE, value -> ((int) value) >= min && ((int) value) <= max);
-        return this;
     }
 }

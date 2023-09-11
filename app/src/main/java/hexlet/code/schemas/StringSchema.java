@@ -5,18 +5,15 @@ public final class StringSchema extends BaseSchema {
         addCheck(CheckName.REQUIRED, value -> value instanceof String && !((String) value).isEmpty());
     }
 
-    public StringSchema required() {
+    public void required() {
         required = true;
-        return this;
     }
 
-    public StringSchema contains(String substring) {
+    public void contains(String substring) {
         addCheck(CheckName.CONTAINS, value -> ((String) value).contains(substring));
-        return this;
     }
 
-    public StringSchema minLength(int length) {
+    public void minLength(int length) {
         addCheck(CheckName.MIN_LENGTH, value -> ((String) value).length() >= length);
-        return this;
     }
 }
